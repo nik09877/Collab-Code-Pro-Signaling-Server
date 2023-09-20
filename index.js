@@ -23,7 +23,7 @@ const server = http.createServer((request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/plain' });
   response.end('okay');
 });
-const wss = new ws.Server({ server, protocol: 'wss' });
+const wss = new ws.Server({ server });
 
 /**
  * Map froms topic-name to set of subscribed clients.
