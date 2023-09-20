@@ -12,18 +12,12 @@ const pingTimeout = 30000;
 
 const port = process.env.PORT || 4444;
 // @ts-ignore
-// const wss = new ws.Server({ noServer: true });
-
-// const server = http.createServer((request, response) => {
-//   response.writeHead(200, { 'Content-Type': 'text/plain' });
-//   response.end('okay');
-// });
+const wss = new ws.Server({ noServer: true });
 
 const server = http.createServer((request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/plain' });
   response.end('okay');
 });
-const wss = new ws.Server({ server });
 
 /**
  * Map froms topic-name to set of subscribed clients.
@@ -154,4 +148,4 @@ server.on('upgrade', (request, socket, head) => {
 
 server.listen(port);
 
-console.log('Signaling server running on port ', port);
+console.log('Signaling server running on localhost:', port);
