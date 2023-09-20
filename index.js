@@ -12,18 +12,18 @@ const pingTimeout = 30000;
 
 const port = process.env.PORT || 4444;
 // @ts-ignore
-const wss = new ws.Server({ noServer: true, protocol: 'wss' });
-
-const server = http.createServer((request, response) => {
-  response.writeHead(200, { 'Content-Type': 'text/plain' });
-  response.end('okay');
-});
+// const wss = new ws.Server({ noServer: true });
 
 // const server = http.createServer((request, response) => {
 //   response.writeHead(200, { 'Content-Type': 'text/plain' });
 //   response.end('okay');
 // });
-// const wss = new ws.Server({ server });
+
+const server = http.createServer((request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/plain' });
+  response.end('okay');
+});
+const wss = new ws.Server({ server, protocol: 'wss' });
 
 /**
  * Map froms topic-name to set of subscribed clients.
